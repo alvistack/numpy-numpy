@@ -231,3 +231,5 @@ numpy/core/src/npysort/x86-qsort.dispatch.*.cpp
 # multiarray module
 numpy/core/src/multiarray/argfunc.dispatch.c
 numpy/core/src/multiarray/arraytypes.h
+
+.pybuild/
