@@ -26,13 +26,13 @@ cdef extern from "src/pcg64/pcg64.h":
     void pcg64_get_state(pcg64_state *state, uint64_t *state_arr, int *has_uint32, uint32_t *uinteger)
     void pcg64_set_state(pcg64_state *state, uint64_t *state_arr, int has_uint32, uint32_t uinteger)
 
-cdef uint64_t pcg64_uint64(void* st) nogil:
+cdef uint64_t pcg64_uint64(void* st) noexcept nogil:
     return pcg64_next64(<pcg64_state *>st)
 
-cdef uint32_t pcg64_uint32(void *st) nogil:
+cdef uint32_t pcg64_uint32(void *st) noexcept nogil:
     return pcg64_next32(<pcg64_state *> st)
 
-cdef double pcg64_double(void* st) nogil:
+cdef double pcg64_double(void* st) noexcept nogil:
     return uint64_to_double(pcg64_next64(<pcg64_state *>st))
 
 

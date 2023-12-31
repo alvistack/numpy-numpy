@@ -1,0 +1,65 @@
+#!/usr/bin/make -f
+
+SHELL := /bin/bash
+
+export DH_VERBOSE=1
+
+export DEB_BUILD_MAINT_OPTIONS = hardening=+all optimize=-lto
+
+PY3VERS=$(shell py3versions -vr)
+PY3DEF=$(shell py3versions -dv)
+PY3LIBPATH := $(shell python3 -c "from distutils.command.build import build ; from distutils.core import Distribution ; b = build(Distribution()) ; b.finalize_options() ; print (b.build_platlib)")
+
+# Look at #634012 to understand why is needed and what will happen if we set
+# compat to 9
+unexport LDFLAGS
+export ATLAS=None
+
+# https://github.com/numpy/numpy/pull/20695
+export NPY_DISABLE_SVML=1
+
+override_dh_installman:
+	dh_installman -ppython-numpy-doc debian/dh_numpy3.1
+
+override_dh_install:
+	dh_install
+
+	# create symlinks for .h files
+	set -e; for i in $(PY3DEF); do \
+	ABITAG=`python$$i -c "import sys; print(sys.abiflags)"`; \
+	[ -d $(CURDIR)/debian/python3-numpy/usr/include/python$$i$$ABITAG ] || \
+		mkdir -p $(CURDIR)/debian/python3-numpy/usr/include/python$$i$$ABITAG; \
+		dh_link -ppython3-numpy usr/lib/python3/dist-packages/numpy/core/include/numpy usr/include/python$$i$$ABITAG/numpy; \
+	done
+
+override_dh_gencontrol:
+	python3 debian/versions3.helper >> debian/python3-numpy.substvars
+	dh_gencontrol
+
+override_dh_auto_configure:
+
+override_dh_auto_build:
+	pip wheel \
+		--no-deps \
+		--no-build-isolation \
+		--wheel-dir=dist \
+		.
+
+override_dh_auto_install:
+	pip install \
+		--no-deps \
+		--ignore-installed \
+		--root=debian/tmp \
+		--prefix=/usr \
+		dist/*.whl
+	mv debian/tmp/usr/local/* debian/tmp/usr/ || echo $$?
+	rm -rf debian/tmp/usr/local || echo $$?
+	find debian/tmp/usr/lib/python*/*-packages -type f -name '*.pyc' -exec rm -rf {} \;
+	fdupes -qnrps debian/tmp/usr/lib/python*/*-packages
+
+override_dh_auto_test:
+
+override_dh_auto_clean:
+
+%:
+	dh $@ --with python3
