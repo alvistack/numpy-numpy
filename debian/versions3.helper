@@ -1,0 +1,24 @@
+#!/usr/bin/python
+
+'''
+Check if debian/versions is sane and generate substvars for numpy:Provides.
+'''
+
+import os
+
+def main():
+    data = {}
+    file = open('debian/versions', 'r')
+    try:
+        for line in file:
+            line = line.strip()
+            if not line or line.startswith('#'):
+                continue
+            key, value = line.split(None, 1)
+            data[key] = value
+    finally:
+        file.close()
+    print('numpy3:Provides=python3-numpy-abi%s, python3-numpy-api%s' % (data['abi'], data['api']))
+
+if __name__ == '__main__':
+    main()
