@@ -1,5 +1,10 @@
 import os
-from distutils.msvccompiler import MSVCCompiler as _MSVCCompiler
+
+try:
+    from distutils.msvccompiler import MSVCCompiler as _MSVCCompiler
+except ImportError:
+    class _MSVCCompiler():
+        pass
 
 from .system_info import platform_bits
 
