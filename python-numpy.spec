@@ -14,6 +14,8 @@
 
 %global debug_package %{nil}
 
+%global source_date_epoch_from_changelog 0
+
 %global _lto_cflags %{?_lto_cflags} -ffat-lto-objects
 
 Name: python-numpy
