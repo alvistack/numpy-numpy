@@ -107,13 +107,11 @@ Thumbs.db
 
 # Things specific to this project #
 ###################################
-numpy/core/__svn_version__.py
 doc/numpy.scipy.org/_build
 numpy/__config__.py
 numpy/core/include/numpy/__multiarray_api.h
 numpy/core/include/numpy/__ufunc_api.h
 numpy/core/include/numpy/_numpyconfig.h
-numpy/version.py
 site.cfg
 setup.cfg
 .tox
@@ -193,3 +191,5 @@ tools/swig/test/Tensor.py
 tools/swig/test/Vector.py
 tools/swig/test/Vector_wrap.cxx
 tools/swig/test/Array.py
+
+.pybuild/
