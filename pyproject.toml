@@ -48,26 +48,7 @@ classifiers = [
 #         - libquadmath : LGPL-2.1-or-later                         (all except arm64 macOS>=14 and Windows)
 #         The licenses for these vendored components are dynamically included
 #         in the build process for PyPI wheels.
-license = 'BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0'
-license-files = [
-    'LICENSE.txt',                                       # BSD-3-Clause
-    'numpy/_core/include/numpy/libdivide/LICENSE.txt',   # Zlib
-    'numpy/_core/src/common/pythoncapi-compat/COPYING',  # 0BSD
-    'numpy/_core/src/highway/LICENSE',                   # Dual-licensed: Apache 2.0 or BSD 3-Clause
-    'numpy/_core/src/multiarray/dragon4_LICENSE.txt',    # MIT
-    'numpy/_core/src/npysort/x86-simd-sort/LICENSE.md',  # BSD-3-Clause
-    'numpy/_core/src/umath/svml/LICENSE',                # BSD-3-Clause
-    'numpy/fft/pocketfft/LICENSE.md',                    # BSD-3-Clause
-    'numpy/ma/LICENSE',                                  # BSD-3-Clause
-    'numpy/linalg/lapack_lite/LICENSE.txt',              # BSD-3-Clause
-    'numpy/random/LICENSE.md',                           # BSD-3-Clause
-    'numpy/random/src/distributions/LICENSE.md',         # BSD-3-Clause AND MIT
-    'numpy/random/src/mt19937/LICENSE.md',               # BSD-3-Clause AND MIT
-    'numpy/random/src/pcg64/LICENSE.md',                 # MIT
-    'numpy/random/src/philox/LICENSE.md',                # BSD-3-Clause
-    'numpy/random/src/sfc64/LICENSE.md',                 # MIT
-    'numpy/random/src/splitmix64/LICENSE.md',            # CC0-1.0
-]
+license = {text = 'BSD-3-Clause AND 0BSD AND MIT AND Zlib AND CC0-1.0'}
 # The license files below apply only to files in the repo and sdist, not to
 # installed `numpy` packages or wheels (build/doc tools don't affect the
 # license of the installed package). We have to make a choice whether to add
