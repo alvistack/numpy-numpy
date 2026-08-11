@@ -1,0 +1,5 @@
+python-numpy (100:2.5.2-1) UNRELEASED; urgency=medium
+
+  * https://github.com/numpy/numpy/releases/tag/v2.5.2
+
+ -- Wong Hoi Sing Edison <hswong3i@pantarei-design.com>  Tue, 11 Aug 2026 23:08:06 +0800
