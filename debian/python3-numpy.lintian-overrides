@@ -1,0 +1,8 @@
+python3-numpy: copyright-without-copyright-notice
+python3-numpy: initial-upload-closes-no-bugs
+python3-numpy: missing-prerequisite-for-gfortran-module
+python3-numpy: no-manual-page
+python3-numpy: python-module-in-wrong-location
+python3-numpy: shared-library-lacks-prerequisites
+python3-numpy: unusual-interpreter
+python3-numpy: zero-byte-file-in-doc-directory

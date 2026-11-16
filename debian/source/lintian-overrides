@@ -1,0 +1,5 @@
+python-numpy source: file-without-copyright-information
+python-numpy source: no-debian-changes
+python-numpy source: source-contains-prebuilt-windows-binary
+python-numpy source: source-is-missing
+python-numpy source: source-package-encodes-python-version
